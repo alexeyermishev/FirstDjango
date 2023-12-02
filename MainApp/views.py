@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from FirstDjango import settings
+# import environ
+# import os
+
+
 # Create your views here.
 
 items = [
@@ -41,13 +45,16 @@ def get_item(request, id):
         if i["id"] == id:
             item = i
     if item:
-        text =  f'Название: {item["name"]}, кол-во: {item["quantity"]}'
+        text =  f'Название: {item["name"]}, кол-во: {item["quantity"]}<br></br><a href="/items">назад к списку товаров</a>'
     else:
-        text = f'Товар с id={id} не найден'
+        text = f'Товар с id={id} не найден<br></br><a href="/items">назад к списку товаров</a>'
 
     return HttpResponse(text)
 
 def get_items(request):
-    text = [f'{i["id"]}: {i["name"]}<br></br>' for i in items]
-    
+    text = f"""
+        <ul>{''.join([f'<li>{i["id"]}: {i["name"]} <a href="/item/{i["id"]}">Страница{i["name"]}</a></li><br></br>' for i in items])}</ul>
+            """
     return HttpResponse(text)
+# <a href="URL">...</a>
+# <a name="идентификатор">...</a>

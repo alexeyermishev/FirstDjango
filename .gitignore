@@ -1,1 +1,7 @@
 django_venv
+.idea/
+.vscode/
+*env/
+__pycache__/
+*.pyc
+db.*
