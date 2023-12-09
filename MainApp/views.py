@@ -38,11 +38,6 @@ items = [
 
 
 def home(request):
-    # text = f"""
-    # <h1>Изучаем django</h1>
-    # <strong>Автор</strong>: <i>{DEFAULT_USER}</i>
-    # """
-    # return HttpResponse(text)
     context = {
         "name": f"{DEFAULT_USER}",
         "email": f"{DEFAULT_USER_EMAIL}"
@@ -51,19 +46,15 @@ def home(request):
 
 
 def about(request):
-    text = f"""
-    Имя: <strong>{DEFAULT_USER_FIRST_NAME}</strong>
-    <br></br>
-    Отчество: <strong>{DEFAULT_USER_MIDDLE_NAME}</strong>
-    <br></br>
-    Фамилия: <strong>{DEFAULT_USER_SECOND_NAME}</strong>
-    <br></br>
-    телефон: <strong>{DEFAULT_USER_PHONE}</strong>
-    <br></br>
-    email: <strong>{DEFAULT_USER_EMAIL}</strong>
-    <br></br>
-    """
-    return HttpResponse(text)
+    context = {
+        "first_name": DEFAULT_USER_FIRST_NAME, 
+        "second_name": DEFAULT_USER_SECOND_NAME,
+        "middle_name": DEFAULT_USER_MIDDLE_NAME,
+        "phone": DEFAULT_USER_FIRST_NAME,
+        "email": DEFAULT_USER_FIRST_NAME
+    }
+    return render(request, "about.html", context)
+
 
 def get_item(request, id:int):
     for i in items:
@@ -78,9 +69,7 @@ def get_item(request, id:int):
     
 
 def get_items(request):
-
     context = {
         "items": items
     }
-    
     return render(request, "items.html", context)
