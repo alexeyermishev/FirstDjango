@@ -38,11 +38,17 @@ items = [
 
 
 def home(request):
-    text = f"""
-    <h1>Изучаем django</h1>
-    <strong>Автор</strong>: <i>{DEFAULT_USER}</i>
-    """
-    return HttpResponse(text)
+    # text = f"""
+    # <h1>Изучаем django</h1>
+    # <strong>Автор</strong>: <i>{DEFAULT_USER}</i>
+    # """
+    # return HttpResponse(text)
+    context = {
+        "name": f"{DEFAULT_USER}",
+        "email": f"{DEFAULT_USER_EMAIL}"
+    }
+    return render(request, 'index.html', context)
+
 
 def about(request):
     text = f"""
@@ -62,22 +68,31 @@ def about(request):
 def get_item(request, id:int):
     for i in items:
         if i["id"] == id:
-            text =  f"""
-            <h2>Название: {i["name"]}</h2> 
-            <p>Кол-во: {i["quantity"]}</p>
-            <a href="/items">назад к списку товаров</a>
-            """
-            return HttpResponse(text)
+            # text =  f"""
+            # <h2>Название: {i["name"]}</h2> 
+            # <p>Кол-во: {i["quantity"]}</p>
+            # <a href="/items">назад к списку товаров</a>
+            # """
+            # return HttpResponse(text)
+            context = {
+                "name": i["name"],
+                "quantity": i["quantity"],
+                "q": False if i["quantity"] != 0 else True
+            }
+            return render(request, "item.html", context)
         
     text = f'Товар с id={id} не найден<br></br><a href="/items">назад к списку товаров</a>'
     return HttpResponseNotFound(text)
     
 
 def get_items(request):
-    text = f"""
-        <h2>Список товаров</h2>
-        <ol>{''.join([f'<li><a href="/item/{i["id"]}">{i["name"]}</a></li>' for i in items])}</ol>
-            """
-    return HttpResponse(text)
-# <a href="URL">...</a>
-# <a name="идентификатор">...</a>
+    # text = f"""
+    #     <h2>Список товаров</h2>
+    #     <ol>{''.join([f'<li><a href="/item/{i["id"]}">{i["name"]}</a></li>' for i in items])}</ol>
+    #         """
+    # return HttpResponse(text)
+    context = {
+        "items": items
+    }
+    
+    return render(request, "items.html", context)
