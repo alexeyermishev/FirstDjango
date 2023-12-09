@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Название: {{name}}</h2> 
+    {% if q %}
+    <p>Товар отсутствует</p>
+    {% else %}
+    <p>Кол-во: {{quantity}}</p>
+    {% endif %}
+    <a href="/items">назад к списку товаров</a>    
+</body>
+</html>
+
