@@ -6,11 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Название: {{name}}</h2> 
-    {% if q %}
-    <p>Товар отсутствует</p>
+    <h2>Название: {{item.name}}</h2> 
+    {% if item.quantity %}
+    <p>Кол-во: {{item.quantity}}</p>
     {% else %}
-    <p>Кол-во: {{quantity}}</p>
+    <p>Товар отсутствует</p>
     {% endif %}
     <a href="/items">назад к списку товаров</a>    
 </body>

@@ -68,16 +68,8 @@ def about(request):
 def get_item(request, id:int):
     for i in items:
         if i["id"] == id:
-            # text =  f"""
-            # <h2>Название: {i["name"]}</h2> 
-            # <p>Кол-во: {i["quantity"]}</p>
-            # <a href="/items">назад к списку товаров</a>
-            # """
-            # return HttpResponse(text)
             context = {
-                "name": i["name"],
-                "quantity": i["quantity"],
-                "q": False if i["quantity"] != 0 else True
+                "item": i
             }
             return render(request, "item.html", context)
         
@@ -86,11 +78,7 @@ def get_item(request, id:int):
     
 
 def get_items(request):
-    # text = f"""
-    #     <h2>Список товаров</h2>
-    #     <ol>{''.join([f'<li><a href="/item/{i["id"]}">{i["name"]}</a></li>' for i in items])}</ol>
-    #         """
-    # return HttpResponse(text)
+
     context = {
         "items": items
     }
