@@ -9,12 +9,11 @@
     <header>
         <a href="/">Главная страница</a> / <a href="/about">Об авторе</a> / <a href="/items">Список товаров</a>
     </header>
-    <h2>Список товаров</h2>
-    <ol>
-        {% for item in items %}
-        <li><a href="/item/{{item.id}}">{{ item.name }}</a></li>
-        {% endfor %}
-    </ol>
+    <br></br>
+    Имя: <strong>{{first_name}}</strong></br>
+    Отчество: <strong>{{middle_name}}</strong></br>
+    Фамилия: <strong>{{second_name}}</strong></br>
+    телефон: <strong>{{phone}}</strong></br>
+    email: <strong>{{email}}</strong> 
 </body>
 </html>
-

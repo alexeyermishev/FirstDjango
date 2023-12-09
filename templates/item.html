@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<ul class="breadcrumb" >
-    <li><a href="/">Главная страница</a></li>
-    <li><a href="/about">Об авторе</a></li>
-    <li><a href="/items">Список товаров</a></li>
-</ul>
 <body>
+    <header>
+        <a href="/">Главная страница</a> / <a href="/about">Об авторе</a> / <a href="/items">Список товаров</a>
+    </header>
     <h2>Название: {{item.name}}</h2> 
+    <div>
     {% if item.quantity %}
     <p>Кол-во: {{item.quantity}}</p>
     {% else %}
     <p>Товар отсутствует</p>
     {% endif %}
+    </div>
     <a href="/items">назад к списку товаров</a>    
 </body>
 </html>

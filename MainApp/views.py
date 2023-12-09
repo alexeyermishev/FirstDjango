@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 import environ
 import os
-
+from MainApp.models import Item
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -27,15 +27,16 @@ DEFAULT_USER_PHONE = env('DEFAULT_USER_PHONE')
 
 # Create your views here.
 
-items = [
-   {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-   {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-   {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-   {"id": 7, "name": "Картофель фри" ,"quantity":0},
-   {"id": 8, "name": "Кепка" ,"quantity":124},
-]
+# items = [
+#    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
+#    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
+#    {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
+#    {"id": 7, "name": "Картофель фри" ,"quantity":0},
+#    {"id": 8, "name": "Кепка" ,"quantity":124},
+# ]
 
-
+items = Item()
+print(items)
 
 def home(request):
     context = {
