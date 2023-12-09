@@ -1,9 +1,29 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from FirstDjango import settings
-# import environ
-# import os
+from django.http import HttpResponse, HttpResponseNotFound
+import environ
+import os
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+# Set the project base directory
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# False if not in os.environ because of casting above
+DEBUG = env('DEBUG')
+
+DEFAULT_USER = env('DEFAULT_USER')
+DEFAULT_USER_FIRST_NAME = env('DEFAULT_USER_FIRST_NAME')
+DEFAULT_USER_MIDDLE_NAME = env('DEFAULT_USER_MIDDLE_NAME')
+DEFAULT_USER_SECOND_NAME = env('DEFAULT_USER_SECOND_NAME')
+DEFAULT_USER_EMAIL = env('DEFAULT_USER_EMAIL')
+DEFAULT_USER_PHONE = env('DEFAULT_USER_PHONE')
+#items = env('ITEMS')
 
 # Create your views here.
 
@@ -18,42 +38,45 @@ items = [
 
 
 def home(request):
-    text = """
+    text = f"""
     <h1>Изучаем django</h1>
-    <strong>Автор</strong>: <i>Ермишев А.В.</i>
+    <strong>Автор</strong>: <i>{DEFAULT_USER}</i>
     """
     return HttpResponse(text)
 
 def about(request):
     text = f"""
-    Имя: <strong>{settings.DEFAULT_USER_FIRST_NAME}</strong>
+    Имя: <strong>{DEFAULT_USER_FIRST_NAME}</strong>
     <br></br>
-    Отчество: <strong>{settings.DEFAULT_USER_MIDDLE_NAME}</strong>
+    Отчество: <strong>{DEFAULT_USER_MIDDLE_NAME}</strong>
     <br></br>
-    Фамилия: <strong>{settings.DEFAULT_USER_SECOND_NAME}</strong>
+    Фамилия: <strong>{DEFAULT_USER_SECOND_NAME}</strong>
     <br></br>
-    телефон: <strong>{settings.DEFAULT_USER_PHONE}</strong>
+    телефон: <strong>{DEFAULT_USER_PHONE}</strong>
     <br></br>
-    email: <strong>{settings.DEFAULT_USER_EMAIL}</strong>
+    email: <strong>{DEFAULT_USER_EMAIL}</strong>
     <br></br>
     """
     return HttpResponse(text)
 
-def get_item(request, id):
-    item = None
+def get_item(request, id:int):
     for i in items:
         if i["id"] == id:
-            item = i
-    if item:
-        text =  f'Название: {item["name"]}, кол-во: {item["quantity"]}<br></br><a href="/items">назад к списку товаров</a>'
-    else:
-        text = f'Товар с id={id} не найден<br></br><a href="/items">назад к списку товаров</a>'
-
-    return HttpResponse(text)
+            text =  f"""
+            <h2>Название: {i["name"]}</h2> 
+            <p>Кол-во: {i["quantity"]}</p>
+            <a href="/items">назад к списку товаров</a>
+            """
+            return HttpResponse(text)
+        
+    text = f'Товар с id={id} не найден<br></br><a href="/items">назад к списку товаров</a>'
+    return HttpResponseNotFound(text)
+    
 
 def get_items(request):
     text = f"""
-        <ul>{''.join([f'<li>{i["id"]}: {i["name"]} <a href="/item/{i["id"]}">Страница{i["name"]}</a></li><br></br>' for i in items])}</ul>
+        <h2>Список товаров</h2>
+        <ol>{''.join([f'<li><a href="/item/{i["id"]}">{i["name"]}</a></li>' for i in items])}</ol>
             """
     return HttpResponse(text)
 # <a href="URL">...</a>

@@ -122,9 +122,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_USER = 'Ермишев А.В.'
-DEFAULT_USER_FIRST_NAME = 'Алексей'
-DEFAULT_USER_MIDDLE_NAME = 'Викторович'
-DEFAULT_USER_SECOND_NAME = 'Ермишев'
-DEFAULT_USER_EMAIL = 'wilop@mail.ru'
-DEFAULT_USER_PHONE = '89201111111'
+
