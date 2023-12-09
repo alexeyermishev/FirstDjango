@@ -27,16 +27,8 @@ DEFAULT_USER_PHONE = env('DEFAULT_USER_PHONE')
 
 # Create your views here.
 
-# items = [
-#    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-#    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-#    {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-#    {"id": 7, "name": "Картофель фри" ,"quantity":0},
-#    {"id": 8, "name": "Кепка" ,"quantity":124},
-# ]
 
-items = Item()
-print(items)
+items = Item.objects.all()
 
 def home(request):
     context = {
@@ -59,7 +51,7 @@ def about(request):
 
 def get_item(request, id:int):
     for i in items:
-        if i["id"] == id:
+        if i.id == id:
             context = {
                 "item": i
             }
