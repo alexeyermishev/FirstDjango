@@ -9,7 +9,8 @@
     <header>
         <a href="/">Главная страница</a> / <a href="/about">Об авторе</a> / <a href="/items">Список товаров</a>
     </header>
-    <h2>Название: {{item.name}}</h2> 
+    <h2>Название: {{item.name}}</h2>
+    <p>Производитель: {{item.brand}}</p> 
     <div>
     {% if item.count %}
     <p>Кол-во: {{item.count}}</p>
