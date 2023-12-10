@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
 </head>
 <body>
     <header>
@@ -12,7 +14,10 @@
     <h2>Список товаров</h2>
     <ol>
         {% for item in items %}
-        <li><a href="/item/{{item.id}}">{{ item.name }}</a></li>
+        <div class="card">
+            <h3 class="card__title"><a href="/item/{{item.id}}">{{ item.name }}</a></h3>
+            <p class="card__description">{{item.description}}</p>
+        </div>
         {% endfor %}
     </ol>
 </body>

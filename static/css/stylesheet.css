@@ -1,0 +1,63 @@
+body{
+    background-image: url(../img/v960-ning-30.jpg); /* Путь к картинке */
+    /*background-size: cover; /* Растягиваем картинку  по ширине */
+    /*background-repeat: no-repeat; /* Картинка фона без повторения */
+    /*background-position: center; /* Позиция фона по центру */
+  }
+
+
+ .card {
+    float: left; /*Задаем обтекание*/ 
+    /*line-height: 120px;/*Высота строки + верт. центрирования текста*/ 
+    font-size: 15px; 
+    background: rgb(100, 152, 201); 
+    color: white; 
+    margin-top: 60px; 
+    width: 320px; /*Фиксируем ширину блока*/ 
+    margin-right: 10px; 
+    text-align: center; /*Центрируем текст по горизонтали*/
+    /*min-height: 150px;*/
+    height: 350px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    border-radius: 4px;
+    transition: 0.2s;
+    position: relative;
+  }
+.card__title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 150%;
+    color: #b40e0e;
+  }
+  
+.card:hover {
+    box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+  }
+.card__description {
+    height: 350px;
+	overflow: hidden;
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(to bottom, #000, #000, rgba(0, 0, 0, 0));
+}
+
+a:link {
+    color: #497DDD; 
+    border-bottom: 1px dashed; 
+  }
+  a:visited {
+    color: rgb(144, 85, 239);
+  }
+  a:hover {
+    color: #154088; 
+    border-bottom: .07em solid;
+  }
+  a:active {
+    color: #497DDD; 
+    border-bottom: 1px dashed;
+  }

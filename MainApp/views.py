@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
+
 import environ
 import os
 from MainApp.models import Item
@@ -29,6 +30,7 @@ DEFAULT_USER_PHONE = env('DEFAULT_USER_PHONE')
 
 
 items = Item.objects.all()
+
 
 def home(request):
     context = {
@@ -66,3 +68,4 @@ def get_items(request):
         "items": items
     }
     return render(request, "items.html", context)
+

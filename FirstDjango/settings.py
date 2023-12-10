@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MainApp',
     'django_extensions',
+    'view_breadcrumbs',
 ]
 
 MIDDLEWARE = [
@@ -123,5 +124,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+BREADCRUMBS_TEMPLATE = "breadcrumbs.html"
+
+BREADCRUMBS_HOME_LABEL = "My new home"
 
 
