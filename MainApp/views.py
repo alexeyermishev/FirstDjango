@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
-
 import environ
 import os
 from MainApp.models import Item

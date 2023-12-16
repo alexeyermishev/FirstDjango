@@ -1,27 +1,15 @@
-{% load static %}
-<!-- {% static 'main.css' %} -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
-</head>
+{% extends 'base.html' %}
 
-<body>
-    <header>
-        <a href="/">Главная страница</a> / <a href="/about">Об авторе</a> / <a href="/items">Список товаров</a>
-    </header>
-    <h1>Приветствую!</h1>
+{% block content %}
+<h1>Приветствую!</h1>
 
-    Меня зовут: <i>{{name}}</i>
-    Мой email: <i>{{email}}</i>
-    <p>Это главная страница сайта</p>
-    <i>Сайт пока в разработке</i>
-    <br></br>
-    <a href="/items">Список товаров</a>
-   
-
-</body>
-</html>
+Меня зовут: <i>{{name}}</i>
+Мой email: <i>{{email}}</i>
+<p>Это главная страница сайта</p>
+<i>Сайт пока в разработке</i>
+<br></br>
+<a href="/items">Список товаров</a>
+    <!-- {% include 'inc-1.html' %} -->
+{% endblock %}
+    
+ 

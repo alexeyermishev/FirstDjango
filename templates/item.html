@@ -1,16 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
-</head>
-<body>
-    <header>
-        <a href="/">Главная страница</a> / <a href="/about">Об авторе</a> / <a href="/items">Список товаров</a>
-    </header>
+{% extends 'base.html' %}
+
+{% block content %}
     <h2>Название: {{item.name}}</h2>
     <h3>Производитель: {{item.brand}}</h3> 
     <div>
@@ -22,6 +12,6 @@
     </div>
     <p>{{item.description}}</p>
     <a href="/items">назад к списку товаров</a>    
-</body>
-</html>
+{% endblock %}
+
 
