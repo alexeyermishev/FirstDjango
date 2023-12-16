@@ -1,5 +1,4 @@
 body{
-    height: 100%;
     background-image: url(../img/v960-ning-30.jpg); /* Путь к картинке */
     /*background-size: cover; /* Растягиваем картинку  по ширине */
     /*background-repeat: no-repeat; /* Картинка фона без повторения */
@@ -20,7 +19,8 @@ body{
     flex-basis: auto;  
   }
 
-.content {
+  
+.wrap {
     flex: 1 0 auto;
 }
 
