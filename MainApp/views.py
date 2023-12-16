@@ -51,10 +51,14 @@ def about(request):
 
 
 def get_item(request, id:int):
+    colors = []
     for i in items:
         if i.id == id:
+            if i.colors.exists():
+                colors = i.colors.all()    
             context = {
-                "item": i
+                "item": i,
+                "colors":colors
             }
             return render(request, "item.html", context)
         

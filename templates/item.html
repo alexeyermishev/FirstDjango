@@ -6,6 +6,21 @@
     <div>
     {% if item.count %}
     <p>Кол-во: {{item.count}}</p>
+        {% if colors %}
+        <ul class="colors">
+            {% for color in colors %}
+            <!-- <style>
+                li {
+                 color: {{color.name}}; /* Цвет маркеров */
+                }
+                li span {
+                 color: navy; /* Цвет текста */
+                }
+               </style> -->
+            <li style="color: {{color.name}};"><span style="color: black;">{{color.name}}</span></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     {% else %}
     <p>Товар отсутствует</p>
     {% endif %}
