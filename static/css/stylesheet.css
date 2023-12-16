@@ -1,9 +1,32 @@
 body{
+    height: 100%;
     background-image: url(../img/v960-ning-30.jpg); /* Путь к картинке */
     /*background-size: cover; /* Растягиваем картинку  по ширине */
     /*background-repeat: no-repeat; /* Картинка фона без повторения */
     /*background-position: center; /* Позиция фона по центру */
   }
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+  }
+
+.header{
+    height: 32px;
+    flex-grow: 0; /*Запрещаем увеличиваться*/
+    flex-shrink: 0; /*Запрещаем сжиматься*/
+    flex-basis: auto;  
+  }
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex: 0 0 auto;
+    }
 
 
  .card {
@@ -61,3 +84,4 @@ a:link {
     color: #497DDD; 
     border-bottom: 1px dashed;
   }
+

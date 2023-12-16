@@ -5,7 +5,7 @@
     <ol>
         {% for item in items %}
         <div class="card">
-            <h3 class="card__title"><a href="/item/{{item.id}}">{{ item.name }}</a></h3>
+            <h3 class="card__title"><a href="{% url 'item' item.id %}">{{ item.name }}</a></h3>
             <p class="card__description">{{item.description}}</p>
         </div>
         {% endfor %}
